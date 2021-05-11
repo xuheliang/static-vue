@@ -1,5 +1,10 @@
 <template>
-	<el-menu default-active="activeName" :collapse="MenuCollapse" class="el-menu-vertical-demo" :menus="menus">
+	<el-menu
+		default-active="activeName"
+		:collapse="MenuCollapse"
+		class="el-menu-vertical-demo"
+		:menus="menus"
+	>
 		<Menu />
 	</el-menu>
 </template>
@@ -16,9 +21,25 @@ export default {
 			default: false
 		}
 	},
+	created() {
+		//console.log(this.menus)
+	},
 	data() {
 		return {
-			menus: []
+			menus: [
+				{
+					children: [],
+					url: '/home'
+				},
+				{
+					children: [],
+					url: '/addGoods'
+				},
+				{
+					children: [],
+					url: 'GoodsList'
+				}
+			]
 		}
 	},
 	computed: {

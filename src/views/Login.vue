@@ -28,9 +28,9 @@ const checkName = (rule, value, callback) => {
 	callback()
 }
 const validatePass = (rule, value, callback) => {
-	if (value.length !== 6) {
-		return callback(new Error('用户名长度必须为6位'))
-	}
+	// if (value.length !== 6) {
+	// 	return callback(new Error('用户名长度必须为6位'))
+	// }
 	callback()
 }
 export default {
@@ -61,7 +61,7 @@ export default {
 			this.$refs[formname].validate(valid => {
 				if (valid) {
 					console.log('submit')
-					this.$route.push('Home')
+					this.$router.push('/home')
 				} else {
 					this.$message.error('提交失败')
 					return false

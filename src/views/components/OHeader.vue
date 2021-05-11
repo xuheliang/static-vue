@@ -1,7 +1,7 @@
 <template>
 	<div class="header">
 		<div class="header-left">
-			<el-button @click="toggleMenu"></el-button>
+			<el-button @click="toggleMenuFn"></el-button>
 		</div>
 		<div class="header-right">
 			<el-button></el-button>
@@ -20,7 +20,16 @@ export default {
 	data() {
 		return {}
 	},
-	medthods: {}
+	computed: {
+		isCollapseMenu() {
+			return this.isCollapse
+		}
+	},
+	methods: {
+		toggleMenuFn() {
+			this.$emit('toggleMenu', !this.isCollapseMenu)
+		}
+	}
 }
 </script>
 

@@ -3,7 +3,7 @@
 		<el-aside>
 			<SilderMenu :isCollapse="isCollapse"></SilderMenu>
 		</el-aside>
-		<el-conatiner>
+		<el-container>
 			<el-header>
 				<OHeader @click="toggleMenu"></OHeader>
 			</el-header>
@@ -13,7 +13,7 @@
 			<el-footer>
 				<OFooter></OFooter>
 			</el-footer>
-		</el-conatiner>
+		</el-container>
 	</el-container>
 </template>
 
@@ -33,6 +33,7 @@ export default {
 		}
 	},
 	methods: {
+		// eslint-disable-next-line no-unused-vars
 		toggleMenu(res) {
 			res = !res
 		}
