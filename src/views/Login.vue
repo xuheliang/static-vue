@@ -61,6 +61,7 @@ export default {
 			this.$refs[formname].validate(valid => {
 				if (valid) {
 					console.log('submit')
+					this.$route.push('Home')
 				} else {
 					this.$message.error('提交失败')
 					return false
