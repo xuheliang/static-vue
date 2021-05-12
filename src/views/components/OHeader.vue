@@ -1,33 +1,23 @@
 <template>
 	<div class="header">
 		<div class="header-left">
-			<el-button @click="toggleMenuFn"></el-button>
+			<el-button @click="toggleMenu"></el-button>
 		</div>
-		<div class="header-right">
-			<el-button></el-button>
-		</div>
+		<div class="header-right"></div>
 	</div>
 </template>
 
 <script>
 export default {
-	props: {
-		isCollapse: {
-			type: Boolean,
-			defalut: false
-		}
-	},
 	data() {
-		return {}
-	},
-	computed: {
-		isCollapseMenu() {
-			return this.isCollapse
+		return {
+			isCollapse: false
 		}
 	},
 	methods: {
-		toggleMenuFn() {
-			this.$emit('toggleMenu', !this.isCollapseMenu)
+		toggleMenu() {
+			this.isCollapse = !this.isCollapse
+			this.$emit('isCollapse', !this.isCollapse)
 		}
 	}
 }

@@ -1,11 +1,11 @@
 <template>
 	<el-container>
-		<el-aside>
+		<el-aside :width="sliderWidth">
 			<SilderMenu :isCollapse="isCollapse"></SilderMenu>
 		</el-aside>
 		<el-container>
 			<el-header>
-				<OHeader @click="toggleMenu"></OHeader>
+				<OHeader @isCollapse="toggleSliderMenu"></OHeader>
 			</el-header>
 			<el-main>
 				<router-view></router-view>
@@ -29,13 +29,15 @@ export default {
 	},
 	data() {
 		return {
-			isCollapse: false
+			isCollapse: false,
+			sliderWidth: '200px'
 		}
 	},
 	methods: {
 		// eslint-disable-next-line no-unused-vars
-		toggleMenu(res) {
-			res = !res
+		toggleSliderMenu(res) {
+			this.isCollapse = res
+			this.sliderWidth = !res ? '200px' : '75px'
 		}
 	}
 }

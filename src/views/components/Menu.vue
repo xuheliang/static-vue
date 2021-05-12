@@ -2,23 +2,23 @@
 	<div>
 		<template v-for="item in menus">
 			<el-menu-item
-				v-if="!item.children.length || item.url === '/home'"
+				v-if="item.children.length === 0 || item.url === '/home'"
 				:key="item.url"
 				:index="item.url"
 				@click="gotoRoute(item.url)"
 			>
 				<i class="el-icon-location"></i>
-				<span slot="title">1111</span>
+				<span slot="title">{{ item.name }}</span>
 			</el-menu-item>
 
 			<el-submenu
-				v-if="item.chilren.length && item.url !== '/home'"
+				v-if="item.children.length > 0 && item.url !== '/home'"
 				:key="item.url"
 				:index="item.url"
 			>
 				<template slot="title">
 					<i class="el-icon-location"></i>
-					<span slot="title">2222</span>
+					<span slot="title">{{ item.name }}</span>
 				</template>
 				<Menus :menus="item.children" />
 			</el-submenu>
@@ -33,14 +33,6 @@ export default {
 		menus: {
 			type: Array,
 			default: () => []
-		}
-	},
-	created() {
-		console.log(this.menus)
-	},
-	watch: {
-		menu() {
-			console.log(this.menu)
 		}
 	},
 	data() {

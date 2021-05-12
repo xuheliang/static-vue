@@ -1,11 +1,10 @@
 <template>
 	<el-menu
 		default-active="activeName"
-		:collapse="MenuCollapse"
-		class="el-menu-vertical-demo"
-		:menus="menus"
+		:collapse="isCollapse"
+		class="el-menu-vertical"
 	>
-		<Menu />
+		<Menu :menus="menus" />
 	</el-menu>
 </template>
 
@@ -21,23 +20,29 @@ export default {
 			default: false
 		}
 	},
-	created() {
-		//console.log(this.menus)
-	},
 	data() {
 		return {
 			menus: [
 				{
 					children: [],
-					url: '/home'
+					url: '/home',
+					name: '首页'
+				},
+				{
+					children: [
+						{
+							children: [],
+							url: 'GoodsList',
+							name: '商品列表'
+						}
+					],
+					url: '/addGoods',
+					name: '添加商品'
 				},
 				{
 					children: [],
-					url: '/addGoods'
-				},
-				{
-					children: [],
-					url: 'GoodsList'
+					url: 'GoodsList',
+					name: '商品列表'
 				}
 			]
 		}
@@ -45,12 +50,21 @@ export default {
 	computed: {
 		activeName() {
 			return this.$route.path
-		},
-		MenuCollapse() {
-			return this.isCollapse
 		}
-	}
+	},
+	methods: {}
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.el-menu-vertical:not(.el-menu--collapse) {
+	width: 200px;
+	min-height: 400px;
+}
+::v-deep .el-menu--collapse {
+	width: 75px;
+}
+::v-deep .el-menu--collapse .el-submenu__title span {
+	display: none;
+}
+</style>
